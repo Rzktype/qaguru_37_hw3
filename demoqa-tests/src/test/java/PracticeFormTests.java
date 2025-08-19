@@ -13,7 +13,6 @@ public class PracticeFormTests {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = false;
         Configuration.timeout = 5000; // default 4000
     }
 
@@ -25,7 +24,7 @@ public class PracticeFormTests {
         $("#firstName").setValue("Artur");
         $("#lastName").setValue("Legenda");
         $("#userEmail").setValue("alex@egorov.com");
-        $(".custom-control-label").click();
+        $("#genterWrapper").$(".custom-control-label").click();
         $("#userNumber").setValue("7999333444");
         $(".react-datepicker-wrapper").click();
         $(byText("April")).click();
@@ -33,14 +32,24 @@ public class PracticeFormTests {
         $(byText("20")).click();
         $("#subjectsInput").setValue("Economics").pressEnter();
         $("#currentAddress").setValue("Some street 1");
-        $(byText("Sports")).click();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("testImage.jpg");
         $("#react-select-3-input").setValue("Haryana").pressEnter();
         $("#react-select-4-input").setValue("Karnal").pressEnter();
         $("#submit").click();
-        //sleep(3000);
 
-        $(".modal-content").shouldHave(text("Thanks for submitting the form"));
-        $(".table").shouldHave(text("Artur Legenda")); // проверим что ввели в модалку ФИ
+        $(".modal-content").shouldHave(text("Thanks for submitting the form")); // проверим что открылась модалка
+        $(".table-responsive").shouldHave(
+                text("Artur Legenda"),
+                text("alex@egorov.com"),
+                text("Male"),
+                text("7999333444"),
+                text("20 April,1941"),
+                text("Economics"),
+                text("Sports"),
+                text("testImage.jpg"),
+                text("Some street 1"),
+                text("Haryana Karnal")); // проверим что в модалке данные из теста
+
     }
 }

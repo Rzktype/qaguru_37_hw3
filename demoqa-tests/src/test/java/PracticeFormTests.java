@@ -39,17 +39,16 @@ public class PracticeFormTests {
         $("#submit").click();
 
         $(".modal-content").shouldHave(text("Thanks for submitting the form")); // проверим что открылась модалка
-        $(".table-responsive").shouldHave(
-                text("Artur Legenda"),
-                text("alex@egorov.com"),
-                text("Male"),
-                text("7999333444"),
-                text("20 April,1941"),
-                text("Economics"),
-                text("Sports"),
-                text("testImage.jpg"),
-                text("Some street 1"),
-                text("Haryana Karnal")); // проверим что в модалке данные из теста
-
+        // проверим что в модалке данные из теста
+        $(".table-responsive").shouldHave(text("Student Name"), text("Artur Legenda"));
+        $(".table-responsive").shouldHave(text("Student Email"), text("alex@egorov.com"));
+        $(".table-responsive").shouldHave(text("Gender"), text("Male"));
+        $(".table-responsive").shouldHave(text("Mobile"), text("7999333444"));
+        $(".table-responsive").shouldHave(text("Date of Birth"), text("20 April,1941"));
+        $(".table-responsive").shouldHave(text("Subjects"), text("Economics"));
+        $(".table-responsive").shouldHave(text("Hobbies"), text("Sports"));
+        $(".table-responsive").shouldHave(text("Picture"), text("testImage.jpg"));
+        $(".table-responsive").shouldHave(text("Address"), text("Some street 1"));
+        $(".table-responsive").shouldHave(text("State and City"), text("Haryana Karnal"));
     }
 }
